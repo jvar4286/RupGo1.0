@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225190406) do
+ActiveRecord::Schema.define(version: 20170227115116) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -29,13 +29,14 @@ ActiveRecord::Schema.define(version: 20170225190406) do
     t.text     "drink"
     t.text     "shop"
     t.text     "around"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "user_id"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "state",              default: "in_draft"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
 
@@ -60,9 +61,9 @@ ActiveRecord::Schema.define(version: 20170225190406) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "permission_level"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "permission_level",       default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

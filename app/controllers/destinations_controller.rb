@@ -1,11 +1,14 @@
 class DestinationsController < ApplicationController
   before_action :authenticate_user!, except: [:show,:index]
-  before_action :set_destination, only: [:show, :edit, :update, :destroy]
+  before_action :set_destination, only: [:show, :edit, :update, :destroy, :publish]
+  before_action :authenticate_editor!, only: [:new,:create,:update]
+  before_action :authenticate_admin!, only: [:destroy, :publish]
 
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.all
+    @destinations = Destination.paginate(page: params[:page], per_page:6).publicados.ultimos
+    
   end
 
   # GET /destinations/1
@@ -52,6 +55,11 @@ class DestinationsController < ApplicationController
         format.json { render json: @destination.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def publish
+    @destination.publish!
+    redirect_to @destination
   end
 
   # DELETE /destinations/1
