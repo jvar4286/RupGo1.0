@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Deals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Place</th>
+      <th>Description</th>
+      <th>Details</th>
+      <th>Other details</th>
+      <th>Policies and fees</th>
+      <th>Price</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @deals.each do |deal| %>
+      <tr>
+        <td><%= link_to deal.place, deal %></td>
+        <td><%= deal.description %></td>
+        <td><%= deal.details %></td>
+        <td><%= deal.other_details %></td>
+        <td><%= deal.policies_and_fees %></td>
+        <td><%= deal.price %></td>
+        <td><%= deal.user %></td>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Deal', new_deal_path %>

@@ -10,12 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227115116) do
+ActiveRecord::Schema.define(version: 20170312034354) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "deals", force: :cascade do |t|
+    t.string   "place"
+    t.text     "description"
+    t.text     "details"
+    t.text     "other_details"
+    t.text     "policies_and_fees"
+    t.decimal  "price",             precision: 10, scale: 3
+    t.integer  "user_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -47,6 +60,28 @@ ActiveRecord::Schema.define(version: 20170227115116) do
     t.datetime "updated_at",     null: false
     t.index ["category_id"], name: "index_has_categories_on_category_id"
     t.index ["destination_id"], name: "index_has_categories_on_destination_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.integer  "user_id"
+    t.integer  "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deal_id"], name: "index_payments_on_deal_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "token"
+    t.string   "payerid"
+    t.integer  "user_id"
+    t.decimal  "total",      precision: 10, scale: 3
+    t.string   "answer"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "ip_address"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

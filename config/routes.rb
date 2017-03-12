@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  get "/route", to: "payments#route"
+  get "/buys", to: "payments#buys"	
+  get "payments/express"
+  get "transactions/checkout"
+  resources :payments
+  resources :deals
   resources :categories
   devise_for :users
   resources :destinations

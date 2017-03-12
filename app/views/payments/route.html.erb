@@ -1,0 +1,17 @@
+<h1>My Cart</h1>
+<% @payments.each do |payment| %>
+<br>
+<%= payment.deal.place %>
+<br>
+<%= "#{payment.deal.price}USD" unless payment.deal.price.nil? %>
+<%end%> 
+
+<div class="text-right">
+	Total: <%= current_user.pending_purchase_price %>USD
+</div>
+
+<div class="text-center" data-no-turbolinks>
+	<%= link_to(payments_express_path, class: "btn btn-success btn-lg") do %>
+		<i class="fa fa-money"></i> Pay
+	<%end%>
+</div>

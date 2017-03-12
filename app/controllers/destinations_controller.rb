@@ -7,7 +7,7 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.paginate(page: params[:page], per_page:6).publicados.ultimos
+    @destinations = Destination.paginate(page: params[:page], per_page:12).publicados.ultimos
     
   end
 

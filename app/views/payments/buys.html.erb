@@ -1,0 +1,7 @@
+<h1><i class="fa fa-shopping-cart"></i>My Routes </h1>
+<% @payments.each do |payment| %>
+<br>
+<%= link_to payment.deal.place, payment.deal %>
+<br>
+
+<%end%> 

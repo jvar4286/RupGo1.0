@@ -1,0 +1,14 @@
+<%= form_for(payment) do |f| %>
+	<% if payment.errors.any? %>
+		<<h2><%= pruralize(payment.errors.count, "error")%> avoid it your purchase to success</h2>
+	<%end%>
+
+	<%= f.hidden_field :deal_id, value: deal.id %>
+
+	<br>
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+
+<%end%>

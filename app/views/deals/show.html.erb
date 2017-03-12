@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @deal.place %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @deal.description %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @deal.details %>
+</p>
+
+<p>
+  <strong>Other details:</strong>
+  <%= @deal.other_details %>
+</p>
+
+<p>
+  <strong>Policies and fees:</strong>
+  <%= @deal.policies_and_fees %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @deal.price %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @deal.user %>
+</p>
+
+<% if user_signed_in? %>
+ <% if @deal.user_already_paid? current_user.id %>
+ 
+ <% else %> 
+  <%= render "payments/form", payment: Payment.new, deal: @deal %>
+<% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_deal_path(@deal) %> |
+<%= link_to 'Back', deals_path %>
+
+<div
