@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :place %>
-    <%= f.text_field :place %>
+    <%= f.text_area :place %>
   </div>
 
   <div class="field">
     <%= f.label :why_go %>
-    <%= f.text_area :why_go %>
+    <%= f.trix_editor :why_go, class: 'trix-content' %>
   </div>
 
   <div class="field">

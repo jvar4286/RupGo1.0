@@ -30,10 +30,6 @@
   <%= @deal.price %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @deal.user %>
-</p>
 
 <% if user_signed_in? %>
  <% if @deal.user_already_paid? current_user.id %>

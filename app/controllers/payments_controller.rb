@@ -21,6 +21,16 @@ end
 	def buys
 		@payments = current_user.payments.where(state:2)
 	end
+# creando la accion de remover deal
+ def destroy
+    @payments = current_user.payments.where(state: '1').take
+    @payments.destroy
+    redirect_to route_path
+  end
+
+			
+# aqui finaliza la accion de remover
+
 
 	def express
 		price = current_user.pending_purchase_price
@@ -39,4 +49,5 @@ end
 	def deal_params
 		params.require(:payment).permit(:deal_id)
 	end
+
 end

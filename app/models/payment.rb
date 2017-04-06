@@ -10,5 +10,7 @@ class Payment < ApplicationRecord
   def default_values
   	self.state ||= 1
   end
+
+
 end
 

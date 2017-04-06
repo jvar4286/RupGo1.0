@@ -38,6 +38,8 @@ gem 'paperclip'
 gem 'aasm'
 gem 'will_paginate'
 gem 'activemerchant'
+gem 'trix', '~> 0.10.1'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

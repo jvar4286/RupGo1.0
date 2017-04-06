@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   get "/route", to: "payments#route"
+  delete "/route", to: "payments#destroy"
   get "/buys", to: "payments#buys"	
   get "payments/express"
   get "transactions/checkout"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :destinations
  get 'welcome/index'
- root 'welcome#index'
+ root 'destinations#index'
 
  get "/dashboard", to: "welcome#dashboard"
 
