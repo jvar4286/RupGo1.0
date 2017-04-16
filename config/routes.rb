@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :regions
   get "/route", to: "payments#route"
   delete "/route", to: "payments#destroy"
   get "/buys", to: "payments#buys"	

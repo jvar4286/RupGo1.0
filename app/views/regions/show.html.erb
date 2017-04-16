@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+  <h1><%= @region.name %></h1>
+
+<% @region.deals.each do |deal| %>
+     <h3><%= link_to deal.place, deal %></h3>
+        <td><%= deal.price %></td>
+        <br>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>

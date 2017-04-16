@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :set_categories
+  before_action :set_regions
 
   protected
 
@@ -16,6 +17,12 @@ end
 
 	  def set_categories
 		@categories = Category.all
+
+	def set_regions
+		@regions = Region.all
+	end
+	
   end
 
 end
+	

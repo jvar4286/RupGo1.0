@@ -14,6 +14,14 @@
             </li>
           <% end -%>
 
+          <% @regions.each do  |region| %>
+             <li class="col-xs">
+                <%= link_to region.name,region %>
+               
+            </li>
+          <% end -%>
+
+
           <li class="col-xs">
             <%= link_to "HotDeals", deals_path %>
           </li> 

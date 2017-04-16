@@ -16,6 +16,7 @@ class DealsController < ApplicationController
   # GET /deals/new
   def new
     @deal = Deal.new
+    @regions = Region.all
   end
 
   # GET /deals/1/edit
@@ -26,7 +27,7 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = current_user.deals.new(deal_params)
-
+    @deal.regions = params[:regions]
     respond_to do |format|
       if @deal.save
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
@@ -70,6 +71,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:place, :description, :details, :other_details, :policies_and_fees, :price, :user_id)
+      params.require(:deal).permit(:place, :description, :details, :other_details, :policies_and_fees, :price, :user_id, :regions)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312034354) do
+ActiveRecord::Schema.define(version: 20170409010118) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 20170312034354) do
     t.index ["destination_id"], name: "index_has_categories_on_destination_id"
   end
 
+  create_table "has_regions", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.integer  "region_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deal_id"], name: "index_has_regions_on_deal_id"
+    t.index ["region_id"], name: "index_has_regions_on_region_id"
+  end
+
   create_table "payments", force: :cascade do |t|
     t.integer  "deal_id"
     t.integer  "user_id"
@@ -70,6 +79,12 @@ ActiveRecord::Schema.define(version: 20170312034354) do
     t.datetime "updated_at", null: false
     t.index ["deal_id"], name: "index_payments_on_deal_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|

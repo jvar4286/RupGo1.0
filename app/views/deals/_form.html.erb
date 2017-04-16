@@ -41,6 +41,16 @@
     <%= f.text_field :price, step: "any" %>
   </div>
 
+  <div class="field">
+    <label> Regions</label>
+      <% @regions.each do |region| %>
+      <div class="field">
+        <%= check_box_tag "[regions[]", region.id %> <%= region.name %>
+      </div>
+        
+    <% end -%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
