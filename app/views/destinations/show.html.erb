@@ -55,9 +55,17 @@
 </p>
 
 <div class="field">
-  <h3>HotDeals</h3>
+  <h1>HotDeals</h1>
 </div>
 
+<% @destination.deals.each do |deal| %>
+  <h3><%= link_to deal.place, deal %></h3>
 
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<% end -%>
+
+
 <%= link_to 'Back', destinations_path %>
+<br>
+<br>
+<br>
+

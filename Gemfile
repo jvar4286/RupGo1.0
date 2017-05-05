@@ -39,6 +39,7 @@ gem 'aasm'
 gem 'will_paginate'
 gem 'activemerchant'
 gem 'trix', '~> 0.10.1'
+gem 'rails-erd'
 
 
 # Use Capistrano for deployment

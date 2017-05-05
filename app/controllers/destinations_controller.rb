@@ -7,19 +7,22 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.paginate(page: params[:page], per_page:12).publicados.ultimos
+    @destinations = Destination.paginate(page: params[:page], per_page:100).publicados.ultimos
     
   end
 
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+    #@deals = Deal.all
+    @destination = Destination.find(params[:id])
   end
 
   # GET /destinations/new
   def new
     @destination = Destination.new
     @categories = Category.all
+    @regions = Region.all
   end
 
   # GET /destinations/1/edit
@@ -31,6 +34,8 @@ class DestinationsController < ApplicationController
   def create
     @destination = current_user.destinations.new(destination_params)
     @destination.categories = params[:categories]
+    @destination.regions = params[:regions]
+    
 
     respond_to do |format|
       if @destination.save
@@ -80,6 +85,6 @@ class DestinationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def destination_params
-      params.require(:destination).permit(:place, :why_go, :to_do, :sights, :festivals, :sleep, :eat, :drink, :shop, :around, :cover, :categories)
+      params.require(:destination).permit(:place, :why_go, :to_do, :sights, :festivals, :sleep, :eat, :drink, :shop, :around, :cover, :categories, :regions)
     end
 end

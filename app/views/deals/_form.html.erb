@@ -42,13 +42,15 @@
   </div>
 
   <div class="field">
-    <label> Regions</label>
-      <% @regions.each do |region| %>
-      <div class="field">
-        <%= check_box_tag "[regions[]", region.id %> <%= region.name %>
-      </div>
-        
-    <% end -%>
+    Fotos: <%= f.file_field :pic %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :destination_id %>
+  </div>
+
+  <div class="field">
+    <%= collection_select( :deal, :destination_id, Destination.all, :id, :place, {}, {:multiple => false } )%>
   </div>
 
   <div class="actions">

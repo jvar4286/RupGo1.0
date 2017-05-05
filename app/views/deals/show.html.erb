@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<div class="field">
+  <%= image_tag @deal.pic.url(:thumb) %>
+</div>
+
 <p>
   <strong>Place:</strong>
   <%= @deal.place %>
@@ -28,6 +32,11 @@
 <p>
   <strong>Price:</strong>
   <%= @deal.price %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @deal.destination_id%>
 </p>
 
 

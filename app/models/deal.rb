@@ -1,16 +1,25 @@
 class Deal < ApplicationRecord
   belongs_to :user
-  has_many :has_regions
-  has_many :regions, through: :has_regions
+  belongs_to :destination
+
+  #has_many :has_regions
+  #has_many :regions, through: :has_regions
+
+  has_many :has_packages
+  has_many :destinations, through: :has_packages
+
   has_many :payments
   validates :place, presence: true, uniqueness: true
-  after_create :save_regions
+  #after_create :save_regions
   before_save :default_price
+
+  has_attached_file :pic, styles: { medium: "1280x720", thumb: "800x600"}
+  validates_attachment_content_type :pic, content_type: /\Aimage\/.*\Z/
   
 
-  def regions=(value)
-    @regions = value
-  end
+  #def regions=(value)
+    #@regions = value
+  #end
   
   	def default_price
   		self.price ||= 0
@@ -22,10 +31,10 @@ class Deal < ApplicationRecord
 
   private
 
-  def save_regions
-    @regions.each do |region_id|
-      HasRegion.create(region_id: region_id,deal_id: self.id)
-    end
-  end
+  #def save_regions
+    #@regions.each do |region_id|
+      #HasRegion.create(region_id: region_id,deal_id: self.id)
+    #end
+  #end
 end
 

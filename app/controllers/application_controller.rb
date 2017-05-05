@@ -15,14 +15,13 @@ end
 
   private
 
-	  def set_categories
+	def set_categories
 		@categories = Category.all
+	end
 
 	def set_regions
 		@regions = Region.all
 	end
-	
-  end
 
 end
 	
