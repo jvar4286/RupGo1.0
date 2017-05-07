@@ -1,3 +1,4 @@
+<!--
 <div class="col-md-4 top-space">
   <div class="box relative destination-height">
     <div class="absolute destination-height background-cover" style="background:url(<%= destination.cover.url(:thumb) %>);top:0px;left:0px;width:100%;">
@@ -10,5 +11,26 @@
     </div>
   </div>            
 </div>
+-->
 
+<div class="col-md-3 col-sm-4 .col-xs-6 demo-3">
+          
+      <ul class="grid cs-style-3">
+        <li>
+          <figure>
+          <span class="coverdestine">
+          <h3><%= destination.place %></h3>
+          </span>
+            <%= image_tag destination.cover.url(:thumb) %>
+            <figcaption>
+              
+              
+              <h3><%= link_to "Know destination", destination %></h3>
+
+
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+</div><!-- /container -->
 

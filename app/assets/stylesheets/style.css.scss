@@ -1,0 +1,253 @@
+*{
+	margin: 0;
+	padding: 0
+}
+// importing partials
+
+@import "bootstrap";
+// @import "variables";
+// @import "mixin";
+// @import "base";
+// @import "layout";
+
+// importing modules
+
+	// @import "bootstrap";
+	// @import "variables";
+	// @import "mixin";
+	// @import "base";
+	// @import "layout";
+
+/*#myCarousel{
+	display: none;
+}*/
+
+// Styles for pops outs and forms
+.centerforms{
+	text-align: center;
+}
+
+$megamenu: #f1f1f1;
+
+.alert{
+	z-index: 9998;
+	position: absolute;
+	width: 100%;
+	top: 50px;
+	text-align: center;
+	
+}
+
+// End of styles for pops outs and forms
+
+
+body{
+	font-family: verdana;
+
+}
+
+
+header nav ul li {
+	list-style: none;
+	text-decoration: none;
+	a{
+		color: white;
+		text-decoration: none;
+	}
+}
+
+
+#myCarousel{
+	margin-top: -20px
+}
+
+
+
+.relative{
+	position:relative;	
+}
+/*
+.absolute{
+	position:absolute;	
+}
+.destination-height{
+	height:250px;
+}
+.background-cover{
+	background-position:center;
+	background-size:cover;
+}
+}*/
+.text-center{
+	text-align:center;
+
+}
+.destineimg{
+	width: 600px;
+	text-align: center;
+	background: black;
+	padding: 10px;
+	margin-left:10px;
+	box-sizing: content-box;
+	img{
+		width: 550px
+	}
+}
+
+
+
+
+body{
+	margin: 0;
+	padding: 0;
+
+}
+
+
+/*Navigation*/
+
+
+
+#mega_menu{
+	width: 100%;
+	height: 360px;
+	
+
+	// padding-top: 30px; 
+	display: none;
+	margin-top: 0;
+	z-index: 3000;
+	position: absolute;
+	box-shadow: 5px 5px 7px rgba(0,0,0,0.5);
+	background-color: rgba(242,242,242,0.5);
+	
+		// 
+	
+	#categories{
+		margin-top: 30px;
+		float: right;
+		width: 30%;
+		height: 300px;
+		border-left: 1px solid #38546d;
+		padding-right: 5px;
+		}
+
+		ul {
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    width: 100%;
+		    background-color: $megamenu;
+		    margin-left: 10%
+			
+
+			}
+			
+			li{
+				margin-top: 15px;
+
+				
+			}
+
+			a {
+				width: 100%;
+			    display: inline-block;
+			    color: #000;
+			    padding: 8px 16px;
+			    text-decoration: none;
+			    top: 5px;
+			    border-bottom: 3px solid white
+
+				}
+
+				 li a:hover {
+				    
+				    color: white;
+				    background-color: #555;
+			    	border-bottom: 3px solid #598
+				 	}
+		}
+
+
+
+
+/*End Navigation*/
+
+#prueba{
+	background: 100%;
+	width: 100%;
+	text-align: center;
+	background: green;
+	margin-top: 0;
+	color: white;
+}
+
+#container{
+	
+	width: 90%;
+	background-color: #C9D0DA;
+	margin: 0 auto;
+}
+
+.tag{
+
+}
+h1{
+	font-size: 2em;
+	font-weight: 400;
+	z-index: 5;
+	line-height: 1.5;
+	
+}
+
+.bx{
+	background-image: url(bx.png);
+	background-repeat: no-repeat;
+	background-position: bottom left;
+	padding-bottom: 14px;
+	margin-left: -10px;
+}
+
+.bx .tx{
+	
+	padding: 4px 10px;
+	display: inline-block;
+	background-color: #5F8B02;
+	color: #fff;
+	line-height: 125%;
+	box-shadow: 5px 5px 5px	rgba(0,0,0,0.5)
+}
+
+#destine{
+	padding: 10px 0;
+}
+
+.coverdestine{
+	width: 100%;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	z-index: 999;
+
+	text-align: right;
+	bottom: 0;
+	padding-right: 10px; 
+}
+
+.coverdestine h3 {
+	color: white
+}
+
+.main-destines-index{
+	margin-top: 30px;
+	
+}
+/*prevent behaves wrongly*/
+.col-md-4{
+	padding: 0 !important;
+	margin: 0;
+	
+}
+
+
+
+

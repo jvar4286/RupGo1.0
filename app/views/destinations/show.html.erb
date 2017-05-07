@@ -1,58 +1,60 @@
+
 <p id="notice"><%= notice %></p>
+<div id="container">
+  <div id="destine">
+     <h1>
+        <span class="bx"> 
+          <span class="tx"><%= @destination.place%></span>
+        </span>
+      </h1>
+  </div> <!-- destine -->
 
-<div class="field">
-  <%= image_tag @destination.cover.url(:thumb) %>
-</div>
+  <div class="field destineimg">
+      <%= image_tag @destination.cover.url(:thumb) %>
+  </div>
 
-<p>
-  <strong>Place:</strong>
-  <%= @destination.place %>
-</p>
 
-<p>
-  <strong>Why go:</strong>
-  <%= @destination.why_go.html_safe %>
-</p>
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Why Go!</a></li>
+    <li><a href="#tabs-2">What To do</a></li>
+    <li><a href="#tabs-3">Sights</a></li>
+    <li><a href="#tabs-4">Festivals</a></li>
+    <li><a href="#tabs-5">Sleep</a></li>
+    <li><a href="#tabs-6">Eat</a></li>
+    <li><a href="#tabs-7">Drink</a></li>
+    <li><a href="#tabs-8">Shop</a></li>
+    <li><a href="#tabs-9">Sightseeing</a></li>
+  </ul>
+  <div id="tabs-1">
+    <%= @destination.why_go.html_safe  %>
+  </div>
+  <div id="tabs-2">
+    <%= @destination.to_do %>
+  </div>
+  <div id="tabs-3">
+    <%= @destination.sights %>
+  </div>
+  <div id="tabs-4">
+      <%= @destination.festivals %>
+  </div>
+  <div id="tabs-5">
+     <%= @destination.sleep %>
+  </div>
+  <div id="tabs-6">
+    <%= @destination.eat %>
+  </div>
+  <div id="tabs-7">
+    <%= @destination.drink %>
+  </div>
+  <div id="tabs-8">
+    <%= @destination.shop %>
+  </div>
+  <div id="tabs-9">
+    <%= @destination.around %>
+  </div>
 
-<p>
-  <strong>To do:</strong>
-  <%= @destination.to_do %>
-</p>
-
-<p>
-  <strong>Sights:</strong>
-  <%= @destination.sights %>
-</p>
-
-<p>
-  <strong>Festivals:</strong>
-  <%= @destination.festivals %>
-</p>
-
-<p>
-  <strong>Sleep:</strong>
-  <%= @destination.sleep %>
-</p>
-
-<p>
-  <strong>Eat:</strong>
-  <%= @destination.eat %>
-</p>
-
-<p>
-  <strong>Drink:</strong>
-  <%= @destination.drink %>
-</p>
-
-<p>
-  <strong>Shop:</strong>
-  <%= @destination.shop %>
-</p>
-
-<p>
-  <strong>Around:</strong>
-  <%= @destination.around %>
-</p>
+</div> <!-- end of tabs -->
 
 <div class="field">
   <h1>HotDeals</h1>
@@ -63,9 +65,14 @@
 
 <% end -%>
 
+<script>
+    $( function() {
+    $( "#tabs" ).tabs();
+  } );
 
+</script>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
 <%= link_to 'Back', destinations_path %>
-<br>
-<br>
-<br>
+
 

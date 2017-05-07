@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # Adding bootstap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -40,6 +41,7 @@ gem 'will_paginate'
 gem 'activemerchant'
 gem 'trix', '~> 0.10.1'
 gem 'rails-erd'
+
 
 
 # Use Capistrano for deployment
