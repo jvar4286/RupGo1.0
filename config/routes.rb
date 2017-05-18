@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'uploads/create'
+  post 'uploads' => 'uploads#create'
   resources :regions
   get "/route", to: "payments#route"
   delete "/route", to: "payments#destroy"

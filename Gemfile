@@ -26,6 +26,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Adding bootstap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'font-awesome-rails'  
+gem 'simple_form'
+gem 'summernote-rails', '~> 0.8.3.0' 
+gem 'codemirror-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -39,7 +43,6 @@ gem 'paperclip'
 gem 'aasm'
 gem 'will_paginate'
 gem 'activemerchant'
-gem 'trix', '~> 0.10.1'
 gem 'rails-erd'
 
 

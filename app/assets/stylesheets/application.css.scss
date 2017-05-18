@@ -12,6 +12,11 @@
  *
  *= require_tree .
  *= require_self
- *= require trix
  *= require jquery-ui
  */
+
+@import "bootstrap";
+@import "font-awesome";
+@import "codemirror";
+@import "summernote";
+@import "codemirror/themes/solarized";

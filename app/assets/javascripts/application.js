@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require turbolinks
-//= require trix
 //= require bootstrap
+//= require codemirror
+//= require codemirror/modes/ruby
+//= require summernote
+//= require summernote/locales/ko-KR
+//= require turbolinks
 //= require_tree .
