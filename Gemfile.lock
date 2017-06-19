@@ -48,6 +48,8 @@ GEM
     autoprefixer-rails (6.7.7)
       execjs
     bcrypt (3.1.11)
+    bootstrap-datepicker-rails (1.6.4.1)
+      railties (>= 3.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -208,6 +210,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   activemerchant
+  bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
   codemirror-rails

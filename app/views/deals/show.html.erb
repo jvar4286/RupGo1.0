@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <div class="field">
@@ -11,22 +12,7 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @deal.description %>
-</p>
-
-<p>
-  <strong>Details:</strong>
-  <%= @deal.details %>
-</p>
-
-<p>
-  <strong>Other details:</strong>
-  <%= @deal.other_details %>
-</p>
-
-<p>
-  <strong>Policies and fees:</strong>
-  <%= @deal.policies_and_fees %>
+  <%= @deal.description.html_safe %>
 </p>
 
 <p>
@@ -34,21 +20,18 @@
   <%= @deal.price %>
 </p>
 
-<p>
-  <strong>Destination:</strong>
-  <%= @deal.destination_id%>
-</p>
+<% if !user_signed_in? %>
+<%= render "payments/form", payment: Payment.new, deal: @deal %>
+<% end %>
 
 
 <% if user_signed_in? %>
  <% if @deal.user_already_paid? current_user.id %>
- 
- <% else %> 
+<% else %> 
   <%= render "payments/form", payment: Payment.new, deal: @deal %>
 <% end %>
 <% end %>
 
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
+<br>
+<br>
 <%= link_to 'Back', deals_path %>
-
-<div

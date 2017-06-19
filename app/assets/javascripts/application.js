@@ -19,4 +19,7 @@
 //= require summernote
 //= require summernote/locales/ko-KR
 //= require turbolinks
+//= require bootstrap-datepicker
 //= require_tree .
+
+

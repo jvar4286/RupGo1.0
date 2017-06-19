@@ -20,7 +20,7 @@
     <% @deals.each do |deal| %>
       <tr>
         <td><%= link_to deal.place, deal %></td>
-        <td><%= deal.description %></td>
+        <td><%= deal.Description.html_safe %></td>
         <td><%= deal.details %></td>
         <td><%= deal.other_details %></td>
         <td><%= deal.policies_and_fees %></td>

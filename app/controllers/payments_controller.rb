@@ -16,17 +16,32 @@ end
 
 	def route
 		@payments = current_user.payments.where(state:1)
+		
 	end
+
+	#def quantity
+		#@payments = current_user.payments.find.last.quantity
+	#end
 
 	def buys
 		@payments = current_user.payments.where(state:2)
 	end
+
+	def check_in
+		@payments = current_user.payments.find(params[:id])
+	end
+
 # creando la accion de remover deal
- def destroy
-    @payments = current_user.payments.where(state: '1').take
-    @payments.destroy
-    redirect_to route_path
-  end
+def destroy
+   @payments = current_user.payments.where(state: '1').take.destroy
+   redirect_to route_path
+end
+
+ #def destroy
+    #@payments = current_user.payments.where(state: '1').take
+    #@payments.destroy
+    #redirect_to route_path
+  #end
 
 			
 # aqui finaliza la accion de remover
@@ -47,7 +62,7 @@ end
 	private
 
 	def deal_params
-		params.require(:payment).permit(:deal_id)
+		params.require(:payment).permit(:deal_id, :check_in, :check_out, :quantity)
 	end
 
 end

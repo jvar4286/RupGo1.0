@@ -19,17 +19,20 @@
     </tr>
   </thead>
  <% @destinations.each do |destination| %>
+ 
       <tr>
         <td><%= link_to destination.place, destination %></td>
-        <td><%= destination.why_go %></td>
-        <td><%= destination.to_do %></td>
-        <td><%= destination.sights %></td>
-        <td><%= destination.festivals %></td>
-        <td><%= destination.sleep %></td>
-        <td><%= destination.eat %></td>
-        <td><%= destination.drink %></td>
-        <td><%= destination.shop %></td>
-        <td><%= destination.around %></td>
+        <td><%=truncate(destination.why_go,length:20)%></td>
+        <td><%=truncate(destination.to_do,length:20) %></td>
+        <td><%=truncate(destination.sights,length:20) %></td>
+        <td><%=truncate(destination.festivals,length:20) %></td>
+        <td><%=truncate(destination.sleep,length:20) %></td>
+        <td><%=truncate(destination.eat,length:20) %></td>
+        <td><%=truncate(destination.drink,length:20) %></td>
+        <td><%=truncate(destination.shop,length:20) %></td>
+        <td><%=truncate(destination.around,length:20) %></td>
+
+      
         <td><%= link_to 'Show', destination %></td>
         <td><%= link_to 'Edit', edit_destination_path(destination) %></td>
         <td><%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' } %></td>

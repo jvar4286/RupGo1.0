@@ -1,7 +1,7 @@
 class DestinationsController < ApplicationController
   before_action :authenticate_user!, except: [:show,:index]
   before_action :set_destination, only: [:show, :edit, :update, :destroy, :publish]
-  before_action :authenticate_editor!, only: [:new,:create,:update]
+  before_action :authenticate_editor!, only: [:new,:create,:update,:edit]
   before_action :authenticate_admin!, only: [:destroy, :publish]
 
   # GET /destinations
