@@ -7,21 +7,21 @@
 	<%= f.hidden_field :deal_id, value: deal.id %>
 
 <div class="field">
-    <%= f.label :Travellers %>
+    <strong><%= t ".travellers" %></strong>
     <%= f.select :quantity, options_for_select(1..12) %>
 </div>
 
 <div class="field">
-    <%= f.label :Check_in %>
+    <strong><%= t ".check_in" %></strong>
     <%= f.date_select :check_in %>
 </div>
 
 <div class="field">
-    <%= f.label :Check_Out %>
+    <strong><%= t ".check_out" %></strong>
     <%= f.date_select :check_out %> 
 </div>
-
-
+<br>
+<br>
 <div class="actions">
     <%= f.submit %>
 </div>

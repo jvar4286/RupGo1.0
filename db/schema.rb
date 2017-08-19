@@ -10,12 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602120457) do
+ActiveRecord::Schema.define(version: 20170815125917) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "destination_id"
+    t.text     "body"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["destination_id"], name: "index_comments_on_destination_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "deal_translations", force: :cascade do |t|
+    t.integer  "deal_id",           null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "place"
+    t.text     "description"
+    t.text     "details"
+    t.text     "other_details"
+    t.text     "policies_and_fees"
+    t.decimal  "price"
+    t.index ["deal_id"], name: "index_deal_translations_on_deal_id"
+    t.index ["locale"], name: "index_deal_translations_on_locale"
   end
 
   create_table "deals", force: :cascade do |t|
@@ -35,8 +60,29 @@ ActiveRecord::Schema.define(version: 20170602120457) do
     t.integer  "destination_id"
     t.date     "check_in"
     t.date     "check_out"
+    t.string   "filter"
+    t.string   "category"
     t.index ["destination_id"], name: "index_deals_on_destination_id"
     t.index ["user_id"], name: "index_deals_on_user_id"
+  end
+
+  create_table "destination_translations", force: :cascade do |t|
+    t.integer  "destination_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "place"
+    t.text     "why_go"
+    t.text     "to_do"
+    t.text     "sights"
+    t.text     "festivals"
+    t.text     "sleep"
+    t.text     "eat"
+    t.text     "drink"
+    t.text     "shop"
+    t.text     "around"
+    t.index ["destination_id"], name: "index_destination_translations_on_destination_id"
+    t.index ["locale"], name: "index_destination_translations_on_locale"
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -59,6 +105,8 @@ ActiveRecord::Schema.define(version: 20170602120457) do
     t.datetime "cover_updated_at"
     t.string   "state",              default: "in_draft"
     t.integer  "region_id"
+    t.string   "filter"
+    t.string   "category"
     t.index ["region_id"], name: "index_destinations_on_region_id"
     t.index ["user_id"], name: "index_destinations_on_user_id"
   end
@@ -105,12 +153,32 @@ ActiveRecord::Schema.define(version: 20170602120457) do
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deal_id"], name: "index_questions_on_deal_id"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "destination_id"
     t.index ["destination_id"], name: "index_regions_on_destination_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "keywords"
+    t.string   "filter"
+    t.decimal  "min_price"
+    t.decimal  "max_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "category"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -149,6 +217,12 @@ ActiveRecord::Schema.define(version: 20170602120457) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.integer  "permission_level",       default: 1
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.text     "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

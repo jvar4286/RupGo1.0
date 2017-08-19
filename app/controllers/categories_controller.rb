@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_editor!, only: [:new,:create,:update,:edit]
   before_action :authenticate_admin!, only: [:destroy]
-  # GET /categories
+  # GET /categories 
   # GET /categories.json
   def index
     @categories = Category.all

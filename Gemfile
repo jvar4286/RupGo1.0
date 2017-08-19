@@ -31,6 +31,11 @@ gem 'simple_form'
 gem 'summernote-rails', '~> 0.8.3.0' 
 gem 'codemirror-rails'
 gem 'bootstrap-datepicker-rails'
+# Omniauth istallation
+gem 'omniauth'
+# middleware facebook
+gem 'omniauth-facebook'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -67,3 +72,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'activemodel-serializers-xml'

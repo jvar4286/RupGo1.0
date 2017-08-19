@@ -1,23 +1,38 @@
 
 <p id="notice"><%= notice %></p>
 
+<h1><%= @deal.place %></h1>
+
 <div class="field">
   <%= image_tag @deal.pic.url(:thumb) %>
 </div>
 
 <p>
-  <strong>Place:</strong>
-  <%= @deal.place %>
+  <strong><%= t ".description" %>:</strong>
+  <%= @deal.description %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @deal.description.html_safe %>
+  <strong><%= t ".details" %>:</strong>
+  <%= @deal.details %>
 </p>
 
 <p>
-  <strong>Price:</strong>
+  <strong><%= t ".other_details" %>:</strong>
+  <%= @deal.other_details %>
+</p>
+
+<p>
+  <strong><%= t ".policies_and_fees" %>:</strong>
+  <%= @deal.policies_and_fees %>
+</p>
+<p>
+  <strong><%= t ".price" %>:</strong>
   <%= @deal.price %>
+</p>
+<p>
+  <strong><%= t ".category" %>:</strong>
+  <%= @deal.category %>
 </p>
 
 <% if !user_signed_in? %>
@@ -31,7 +46,17 @@
   <%= render "payments/form", payment: Payment.new, deal: @deal %>
 <% end %>
 <% end %>
-
+<div class="field">
+	<h3><%= t ".questions" %></h3>
+	<ul>
+    <% @deal.questions.each do |question| %>
+    <li>
+    <%= question.body %>
+    </li>
+  <% end %>
+  </ul>
+<%= render "questions/form" %>
+</div>
 <br>
 <br>
 <%= link_to 'Back', deals_path %>

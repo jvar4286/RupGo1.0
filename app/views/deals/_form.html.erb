@@ -18,12 +18,33 @@
   </div>
 
   <div class="field">
-    <%= f.input :description, as: :summernote %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
 
   <div class="field">
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :other_details %>
+    <%= f.text_area :other_details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :policies_and_fees %>
+    <%= f.text_area :policies_and_fees %>
+  </div>
+  
+  <div class="field">
     <%= f.label :price %>
     <%= f.text_field :price, step: "any" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.text_field :category %>
   </div>
 
   <div class="field">
@@ -40,5 +61,6 @@
 
   <div class="actions">
     <%= f.submit %>
+
   </div>
 <% end %>

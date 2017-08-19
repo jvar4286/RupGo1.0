@@ -7,6 +7,7 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
+    @destinations = Destination.search(params[:search])
     @destinations = Destination.paginate(page: params[:page], per_page:100).publicados.ultimos
     
   end
@@ -16,6 +17,7 @@ class DestinationsController < ApplicationController
   def show
     #@deals = Deal.all
     @destination = Destination.find(params[:id])
+    @comment = Comment.new
   end
 
   # GET /destinations/new
@@ -85,6 +87,6 @@ class DestinationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def destination_params
-      params.require(:destination).permit(:place, :why_go, :to_do, :sights, :festivals, :sleep, :eat, :drink, :shop, :around, :cover, :categories, :regions)
+      params.require(:destination).permit(:place, :why_go, :to_do, :sights, :festivals, :sleep, :eat, :drink, :shop, :around, :cover, :categories, :regions, :category, :filter)
     end
 end

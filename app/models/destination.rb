@@ -1,7 +1,8 @@
 class Destination < ApplicationRecord
 	include AASM
+	translates :place, :why_go, :to_do, :sights, :festivals, :sleep, :eat, :drink, :shop, :around
 	has_many :deals, dependent: :destroy
-
+	has_many :comments, dependent: :destroy
 	has_many :has_regions
   	has_many :regions, through: :has_regions
 	belongs_to :user
@@ -60,5 +61,13 @@ class Destination < ApplicationRecord
       		HasRegion.create(region_id: region_id,destination_id: self.id)
     end
   end
+
+  	def self.search(search)
+  		if search
+  			where(["place LIKE ?", "%#{search}%"])
+  		else
+  			all
+  		end
+  	end
 
 end

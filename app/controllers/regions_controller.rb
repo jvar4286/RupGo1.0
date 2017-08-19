@@ -1,5 +1,5 @@
 class RegionsController < ApplicationController
-  before_action :set_region, only: [:show]
+  before_action :set_region, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_editor!, only: [:new,:create,:update,:edit]
   before_action :authenticate_admin!, only: [:destroy]
   # GET /regions

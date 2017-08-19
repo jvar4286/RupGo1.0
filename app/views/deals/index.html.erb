@@ -1,17 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Deals</h1>
-
+<h1><%= t ".title" %></h1>
+<em><%= t ".subtitle" %></em>
+<br>
+<br>
 <table>
   <thead>
     <tr>
-      <th>Place</th>
-      <th>Description</th>
-      <th>Details</th>
-      <th>Other details</th>
-      <th>Policies and fees</th>
-      <th>Price</th>
-      <th>Destination</th>
+      <th><%= t ".place" %></th>
+      <th><%= t ".description" %></th>
+      <th><%= t ".details" %></th>
+      <th><%= t ".other_details" %></th>
+      <th><%= t ".policies_and_fees" %></th>
+      <th><%= t ".price" %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,12 +21,11 @@
     <% @deals.each do |deal| %>
       <tr>
         <td><%= link_to deal.place, deal %></td>
-        <td><%= deal.Description.html_safe %></td>
+        <td><%= deal.description %></td>
         <td><%= deal.details %></td>
         <td><%= deal.other_details %></td>
         <td><%= deal.policies_and_fees %></td>
-        <td><%= deal.price %></td>
-        <td><%= deal.destination_id %></td>
+        <td>$<%= deal.price %></td>
         <td><%= link_to 'Show', deal %></td>
         <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
         <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

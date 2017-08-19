@@ -20,4 +20,29 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  deals:
+    index:
+      title: "Deals"
+      subtitle: "Thank you for visiting our travel store. Now take your wallet and buy something."
+    show:
+      questions: "Questions and answers about this trip"
+
+  partials:
+    navigation:
+      colombia: "GET TO KNOW COLOMBIA"
+      account: "ACCOUNT"
+      my_cart: "MY CART"
+      HotDeals: "HOTDEALS"
+      dropdown: "DROPDOWN"
+      My_routes: "My routes"
+      Close_session: "Close Session"
+      Sign_in: "Sign In"
+      Create_account: "Create Account"
+      Language: "Language"
+
+
+
+
+
+
+      

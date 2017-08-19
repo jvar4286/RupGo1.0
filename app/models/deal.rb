@@ -1,6 +1,8 @@
 class Deal < ApplicationRecord
+  translates :place, :description, :details, :other_details, :policies_and_fees, :price
   belongs_to :user
   belongs_to :destination
+  has_many :questions, dependent: :destroy
 
   #has_many :has_regions
   #has_many :regions, through: :has_regions
@@ -31,10 +33,5 @@ class Deal < ApplicationRecord
 
   private
 
-  #def save_regions
-    #@regions.each do |region_id|
-      #HasRegion.create(region_id: region_id,deal_id: self.id)
-    #end
-  #end
 end
 

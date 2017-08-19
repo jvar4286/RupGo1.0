@@ -12,6 +12,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @question = Question.new
   end
 
   # GET /deals/new
@@ -73,6 +74,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:place, :description, :details, :other_details, :policies_and_fees, :price, :user_id, :regions, :pic, :destination_id)
+      params.require(:deal).permit(:place, :description, :details, :other_details, :policies_and_fees, :price, :user_id, :regions, :pic, :destination_id, :category)
     end
 end

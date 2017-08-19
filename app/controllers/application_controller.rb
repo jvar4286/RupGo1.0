@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :set_locale
   before_action :set_categories
   before_action :set_regions
 
@@ -14,6 +15,14 @@ class ApplicationController < ActionController::Base
 end 
 
   private
+
+  	def set_locale
+  		I18n.locale = params[:locale] if params[:locale].present?
+  	end
+
+  	def default_url_options(options = {})
+  		{locale: I18n.locale}
+  	end
 
 	def set_categories
 		@categories = Category.all
