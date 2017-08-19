@@ -27,6 +27,7 @@ gem 'jquery-ui-rails'
 # Adding bootstap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'font-awesome-rails'  
+gem 'feathericon-sass'
 gem 'simple_form'
 gem 'summernote-rails', '~> 0.8.3.0' 
 gem 'codemirror-rails'
@@ -50,6 +51,7 @@ gem 'aasm'
 gem 'will_paginate'
 gem 'activemerchant'
 gem 'rails-erd'
+gem 'record_tag_helper', '~> 1.0'
 
 
 

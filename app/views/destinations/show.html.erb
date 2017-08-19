@@ -63,12 +63,56 @@
 <div class="field">
   <h1><%= t ".HotDeals" %></h1>
 </div>
+<div class="container">
+      
+      <div class="content">
+                
+        
+        <div class="gridd">
+        <% @destination.deals.each do |deal| %>
+          <figure class="effect-zoe">
+            <div class="deal-info">
+              
+              <div class="row name-deal">
+                <div class="col-md-12">
+                  <h1><%= deal.place %></h1>
+                </div>
+              </div>
 
-<% @destination.deals.each do |deal| %>
-  <h3><%= link_to deal.place, deal %></h3>
+              <div class="row price-deal">
+                <div class="col-md-6 deal-position deal-price">
+                <h1><%= deal.price %></h1>
+                <br>
+                <p><%= deal.policies_and_fees %></p>
+                  
+                </div>
+                <div class="col-md-6 deal-position deal-offert hidden-promo">
+                <h1><%= deal.other_details %></h1></div>
+              </div>
 
-<% end -%>
-<div class="fiedl">
+            </div>
+            <%= image_tag deal.pic.url() %>
+            
+            <figcaption>
+              <h3><%= deal.place %></h3>
+              <p class="icon-links">
+                  <%= link_to '<i class="fe fe-eye"></i>'.html_safe, deal_path(deal) %>
+                  <a href=""><i class="fa fa-list-alt" alt="Fees and Policies" aria-hidden="true"></i></a>
+              </p>
+              <p class="description"><%= deal.description %></p>
+            </figcaption>     
+          </figure>
+          <%end%>
+
+
+        </div><!--  grid -->
+         
+        
+      </div> <!-- content -->
+      
+    </div><!-- /container --> 
+
+<div class="field">
   <h3><%= t ".Comments" %></h3>
 
 <ul>
@@ -80,6 +124,7 @@
   </ul>
   <%= render "comments/form" %>
 </div>
+
 <script>
     $( function() {
     $( "#tabs" ).tabs();

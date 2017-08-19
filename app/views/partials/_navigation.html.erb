@@ -1,6 +1,6 @@
 <header>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -11,64 +11,44 @@
           <span class="icon-bar"></span>
         </button>
         
-        <%= link_to "RupGo", destinations_path, :class=>"navbar-brand" %>
-
-      </div>
+        <%= link_to image_tag("marca.png"), destinations_path, :class=>"navbar-brand" %>
+      </div> <!-- navbar-header -->
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <!-- <li><%= link_to "HotDeals", deals_path %></li>
-                    <li id="colombia"><a href="#">COLOMBIA</a></li> -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t ".dropdown" %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
+        
+       
 
-        <!-- Form To SEARCH CONTENT -->
-
-        <!-- <form class="navbar-form navbar-left">
+        <form class="navbar-form navbar-left">
           <div class="form-group">
+            <i class="fa fa-search" aria-hidden="true">
             <input type="text" class="form-control" placeholder="Search">
+
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
-        </form> -->
-
+        </form>
+        
           <!-- Search -->
-            <i class="fa fa-search" aria-hidden="true"><%= link_to "Advanced search", new_search_path %></i>
+            <%= link_to "Advanced search", new_search_path %></i>
           
-          <!-- Search end-->  
+          <!-- Search end-->
 
         <ul class="nav navbar-nav navbar-right">
           
-          <li id="colombia"><a href="#" ><%= t ".colombia" %></a></li>
-          <li><%= link_to (t ".HotDeals"), deals_path %></li>
-
-        <%= t ".Language" %>:
-        <%= link_to_unless_current "English", locale: "en" %> |
-        <%= link_to_unless_current "Español", locale: "es" %>  
-        
+          <li class="itnav" id="colombia"><%= t ".colombia" %></li>
+          <li class="itnav"><%= link_to (t ".HotDeals"), deals_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to (t ".my_cart"), route_path %></li>
-          <!-- Facebook image -->
-          <%= image_tag(current_user.image)%>
-          <!-- Facebook image end-->
-        <% end -%>
-
+          <li class="itnav"><%= link_to (t ".my_cart"), route_path %></li>
+          <span><%= image_tag(current_user.image)%></span>
           
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t ".account" %><span class="caret"></span></a>
-            <ul class="dropdown-menu">
+        <% end -%>
+        <li><%= t ".Language" %>:
+        <%= link_to_unless_current "English", locale: "en" %> <span>&nbsp|&nbsp</span> 
+        <%= link_to_unless_current "Español", locale: "es" %></li>
+          <li class="dropdown sign itnav">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ACCOUNT<span class="caret"></span></a>
+            <ul class="dropdown-menu signed">
             <% if user_signed_in? %>
               
               <li><%= link_to (t ".My_routes"), buys_path %></li>
@@ -76,58 +56,187 @@
                <% else %>
               <li role="separator" class="divider"></li>
               <li><%= link_to (t ".Sign_in"), new_user_session_path %></li>
-              <!-- link sign in with facebook -->
               <li><%= link_to (t ".Sign_in_Facebook"), user_omniauth_authorize_path(:facebook) %></li>
-              <!-- sign in with facebook end-->
               <li><%= link_to (t ".Create_account"), new_user_registration_path %></li>
             <% end %>
             </ul>
           </li>
+          
         </ul>
-
       </div><!-- /.navbar-collapse -->
-    </div>
-    <div id="mega_menu" class="container no-list">
-      
-      <div id="categories">
-      
-        <h1 class="text-center">Search by Categories</h1>
+  
     
-      <ul>
-       <% @categories.each do  |category| %> 
-          <li class="col-md-5 category">
+    <div id="mega_menu" class="no-list">
+        <div class="row">
+          
+          <div id="regions" class="col-sm-6 col-md-3" >
+            
+            <ul>
+            <%= content_tag_for(:li, @regions) do |region| %>
+            <%= link_to region.name,region %> 
+            <% end %>
+            </ul>
+          </div><!-- regions -->
+       
+          <div id="colombia-map" class="col-sm-3 col-md-3 ">
+              <ul>
                 
-          <%= link_to category.name,category %> 
-                    
-          </li> 
-        <% end -%>
-      </ul>
-      </div> <!-- end categories -->
-      <div id="regions">
-        <h1>this space is for REGIONS</h1>
+                <li> <%= image_tag "and.png", :alt => "", :class => "filter img-responsive and" %></li>
+                <li> <%= image_tag "car.png", :alt => "", :class => "filter img-responsive car" %></li>
+                <li><%= image_tag "ins.png", :alt => "", :class => "filter img-responsive ins" %></li>
+                <li> <%= image_tag "amaz.png", :alt => "", :class => "filter img-responsive amaz" %></li>
+                <li><%= image_tag "gor.png", :alt => "", :class => "filter img-responsive gor" %></li>
+                <li><%= image_tag "pac.png", :alt => "", :class => "filter img-responsive pac" %></li>
+                <li><%= image_tag "ori.png", :alt => "", :class => "filter img-responsive ori" %></li>
+              </ul>
+            
+          </div> <!-- end of colombia -->
+            
+          <div id="categories" class="col-sm-6 col-md-6">
+            <ul>
+              <li>
+                <h3 class="text-center">Search by Categories</h3>
+              </li>
+            </ul>
 
-      </div>
+            <br>
+            <ul>
+              <% @categories.each do  |category| %> 
+              <li class="col-xs-12 col-md-6 sm-6 category">
+                    
+              <%= link_to category.name,category %> 
+              </li> 
+              <% end -%>
+            </ul>
+          </div> <!-- end categories -->
+        
+        </div> <!-- row -->
+        <!-- <div class="row bottom"> Active este cuando tenga contenido para msotrar debajo de el menu desplegable de este Megamenu -->
+          
+        </div>
+      
+    </div> <!-- mega menu -->
     </div><!-- container-fluid -->
   </nav>
-<script>
+
+  <!-- Roll Down Mega Menu script -->
+ <script>
       $(document).ready(function(){
-  
-     $("#colombia").mouseenter(function(){
+      $("#mega_menu").hide();
+      
+      $(".sign").mouseenter(function(){
+      $(".signed").slideToggle("fast");
+      $("#mega_menu").slideUp("fast");
+        
+          });
+
+      $(".sign").mouseleave(function(){
+      $(".signed").slideUp("fast");
+
+          });
+
+      $("#colombia").mouseenter(function(){
       $("#mega_menu").slideToggle("fast");
       
-    });
+          });
   
-     $("#colombia").click(function(){
-      $("#mega_menu").slideToggle("fast");
+      $("#colombia").click(function(){
+      $("#mega_menu").slideDown("fast");
       
-    });
-    $(".outmega").click(function(){
+          });
+      
+      $(".outmega").click(function(){
       $("#mega_menu").slideUp("fast");
-    });
-  $("#mega_menu").mouseleave(function(){
+          });
+      
+      $("#mega_menu").mouseleave(function(){
       $("#mega_menu").slideUp("fast");
-    });
+          });
    
-  });
+      });
   </script>
+ 
+ <!-- End Of Roll Down Mega Menu script -->
+
+<!-- Map Script -->
+
+  <script> 
+    $(document).ready(function () {
+  
+// Amazonas
+  $("#region_1").mouseenter(function(){
+    $(".amaz").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_1").mouseout(function(){
+    $(".amaz").toggleClass("dropshadow", 0, "filter" )
+  });
+
+// andina
+
+$("#region_2").mouseenter(function(){
+    $(".and").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_2").mouseout(function(){
+    $(".and").toggleClass("dropshadow", 0, "filter" )
+  });
+
+// pacifica
+
+$("#region_5").mouseenter(function(){
+    $(".pac").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_5").mouseout(function(){
+    $(".pac").toggleClass("dropshadow", 0, "filter" )
+  });
+
+
+// caribe
+
+$("#region_3").mouseenter(function(){
+    $(".car").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_3").mouseout(function(){
+    $(".car").toggleClass("dropshadow", 0, "filter" )
+  });
+
+// gorgona
+
+$("#gorgona").mouseenter(function(){
+    $(".gor").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#gorgona").mouseout(function(){
+    $(".gor").toggleClass("dropshadow", 0, "filter" )
+  });
+
+// San Andrés
+
+$("#region_6").mouseenter(function(){
+    $(".ins").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_6").mouseout(function(){
+    $(".ins").toggleClass("dropshadow", 0, "filter" )
+  });
+
+// Orinoquia
+
+$("#region_4").mouseenter(function(){
+    $(".ori").toggleClass("dropshadow", 0, "filter" )
+  });
+  $("#region_4").mouseout(function(){
+    $(".ori").toggleClass("dropshadow", 0, "filter" )
+  });
+
+})
+
+
+$(function () {
+  $(document).scroll(function () {
+    var $img = $(".img-regions");
+    var $nav = $(".navbar-fixed-top");
+    $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+  });
+});
+  </script>
+
+  <!-- End of Map Script -->
 </header>

@@ -42,6 +42,12 @@
     <%= f.text_field :price, step: "any" %>
   </div>
 
+  currency
+ <div class="field">
+    <%=f.label :currency %>
+    <%= f.text_area :currency, step: "any"%>
+ </div>
+
   <div class="field">
     <%= f.label :category %>
     <%= f.text_field :category %>
@@ -49,6 +55,10 @@
 
   <div class="field">
     Fotos: <%= f.file_field :pic %>
+  </div>
+
+  <div class="field">
+    Fotos: <%= f.file_field :pic1 %>
   </div>
   
   <div class="field">

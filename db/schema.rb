@@ -62,6 +62,11 @@ ActiveRecord::Schema.define(version: 20170815125917) do
     t.date     "check_out"
     t.string   "filter"
     t.string   "category"
+    t.string   "pic1_file_name"
+    t.string   "pic1_content_type"
+    t.integer  "pic1_file_size"
+    t.datetime "pic1_updated_at"
+    t.text     "currency"
     t.index ["destination_id"], name: "index_deals_on_destination_id"
     t.index ["user_id"], name: "index_deals_on_user_id"
   end
@@ -165,9 +170,13 @@ ActiveRecord::Schema.define(version: 20170815125917) do
 
   create_table "regions", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "destination_id"
+    t.string   "rcover_file_name"
+    t.string   "rcover_content_type"
+    t.integer  "rcover_file_size"
+    t.datetime "rcover_updated_at"
     t.index ["destination_id"], name: "index_regions_on_destination_id"
   end
 

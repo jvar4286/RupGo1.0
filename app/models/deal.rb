@@ -18,6 +18,9 @@ class Deal < ApplicationRecord
   has_attached_file :pic, styles: { medium: "1280x720", thumb: "800x600"}
   validates_attachment_content_type :pic, content_type: /\Aimage\/.*\Z/
   
+  has_attached_file :pic1, styles: { medium: "1280x720", thumb: "800x600"}
+  validates_attachment_content_type :pic1, content_type: /\Aimage\/.*\Z/
+  
 
   #def regions=(value)
     #@regions = value

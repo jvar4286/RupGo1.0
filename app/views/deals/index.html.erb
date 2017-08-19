@@ -1,39 +1,131 @@
-<p id="notice"><%= notice %></p>
 
 <h1><%= t ".title" %></h1>
 <em><%= t ".subtitle" %></em>
-<br>
-<br>
-<table>
-  <thead>
-    <tr>
-      <th><%= t ".place" %></th>
-      <th><%= t ".description" %></th>
-      <th><%= t ".details" %></th>
-      <th><%= t ".other_details" %></th>
-      <th><%= t ".policies_and_fees" %></th>
-      <th><%= t ".price" %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<p id="notice alert"><%= notice %></p>
+<div class="img-deals">
+  
+  <h2>Hot Deals!!</h2>
+</div>
+<aside></aside>
+
+
+<div id="container" class="container options2">
+  
+  <div class="row main-row">
     <% @deals.each do |deal| %>
-      <tr>
-        <td><%= link_to deal.place, deal %></td>
-        <td><%= deal.description %></td>
-        <td><%= deal.details %></td>
-        <td><%= deal.other_details %></td>
-        <td><%= deal.policies_and_fees %></td>
-        <td>$<%= deal.price %></td>
-        <td><%= link_to 'Show', deal %></td>
-        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="col-md-12 deal-box">
+      
+      <div class="row">
+        
+        <div class="col-md-6 ">
+          
+          <div class="owl-carousel owl-theme">
+            
+            <div class="item">
+              
+              <div class="deal2-img">
+                <div class="deal2-price">
+                  <span><%= deal.currency %></span>
+                  <%= t ".price" %>
+                </div>
 
-<br>
+                <div class="deal2-promo ">
+                <%= t ".other_details" %>
+                </div>
+                
+                <%= image_tag deal.pic.url() %>
+              </div> <!-- deal2-img -->
+
+            </div> <!-- item -->
+            <div class="item">
+              
+              <div class="deal2-img">
+                <div class="deal2-price">
+                  <span><%= deal.currency %></span>
+                  <%= deal.price %>
+                </div>
+                <div class="deal2-promo">
+                  <%= t ".other_details" %>
+                  <%= t ".policies_and_fees" %>
+                </div>
+                  <%= image_tag deal.pic1.url() %>
+              </div>
+              
+            </div> <!-- item -->
+          </div><!--  owl theme -->
+        </div> <!-- col-md-6 -->
+        <div class="col-md-6">
+          <div class="description">
+            <div>
+              <h1><%= link_to (t ".place"), deal %></h1>
+            </div>
+            <div>
+              <%= t ".details" %>
+            </div>
+            <div>
+              <p><%= t ".description" %></p>
+            </div>
+          <div> <!-- description -->
+           
+                 
+          <div class="btn-group">
+                
+            <button type="button" class="btn btn-success"><%= link_to 'Show the Pack', deal %></button>
+            <% if signed_in? && current_user.is_admin? %>
+            <button type="button" class="btn btn-primary"><%= deal.destination_id %></button>
+            <button type="button" class="btn btn-warning"><%= link_to 'Edit', edit_deal_path(deal) %></button>
+            <button type="button" class="btn btn-danger"><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+          </div>
+               <% else %>
+          <div class="nothing"></div>
+            <% end %>
+                
+        </div> <!-- col-md-6 -->
+           
+            
+
+      </div> <!-- row -->
+ 
+    </div><!-- col-md-12 -->
+
+  </div> <!-- row main-row -->
+   <%end%>
+</div> <!-- container -->
+
+<hr class="style-two">
 
 <%= link_to 'New Deal', new_deal_path %>
+
+
+<style>
+  .hidden-promo{
+  display: none !important
+}
+</style>
+
+<script>
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:1
+        }
+    }
+});
+      // For Demo purposes only (show hover effect on mobile devices)
+      [].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
+        el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+      } );
+
+
+</script>
