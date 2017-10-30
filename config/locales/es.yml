@@ -1,8 +1,6 @@
 es:
   deals:
     index:
-      title: "Paquetes turisticos"
-      subtitle: "Gracias por visitar nuestro sitio de viajes en Colombia. Ahora alista tu billetera y a viajar."
       place: "Lugar"
       description: "Descripción"
       details: "Detalles"

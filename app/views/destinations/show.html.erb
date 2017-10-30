@@ -1,13 +1,17 @@
 
 <p id="notice"><%= notice %></p>
-<div id="container">
+<br>
+<br>
+<br>
+<br>
+<div class="container">
   <div id="destine">
      <h1>
         <span class="bx"> 
           <span class="tx"><%= @destination.place%></span>
         </span>
       </h1>
-  </div> <!-- destine -->
+  
 
   <div class="field destineimg">
       <%= image_tag @destination.cover.url(:thumb) %>
@@ -59,10 +63,11 @@
   </div>
 
 </div> <!-- end of tabs -->
-
+</div>
 <div class="field">
   <h1><%= t ".HotDeals" %></h1>
 </div>
+
 <div class="container">
       
       <div class="content">
@@ -102,6 +107,9 @@
               <p class="description"><%= deal.description %></p>
             </figcaption>     
           </figure>
+          
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>
           <%end%>
 
 
@@ -124,7 +132,7 @@
   </ul>
   <%= render "comments/form" %>
 </div>
-
+</div>
 <script>
     $( function() {
     $( "#tabs" ).tabs();
@@ -132,7 +140,5 @@
 
 </script>
 
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
 
 

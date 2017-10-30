@@ -22,11 +22,20 @@
 en:
   deals:
     index:
-      title: "Deals"
-      subtitle: "Thank you for visiting our travel store. Now take your wallet and buy something."
+      place: "Place"
+      description: "Description"
+      details: "Details"
+      other_details: "Other details"
+      policies_and_fees: "Policies and fees"
+      price: "Price"
+      category: "Category"
     show:
+      description: "Description"
+      details: "Details"
+      other_details: "Other details"
+      policies_and_fees: "Policies and fees"
+      price: "Price"
       questions: "Questions and answers about this trip"
-
   partials:
     navigation:
       colombia: "GET TO KNOW COLOMBIA"
@@ -37,8 +46,37 @@ en:
       My_routes: "My routes"
       Close_session: "Close Session"
       Sign_in: "Sign In"
+      Sign_in_Facebook: "Sign in with Facebook"
       Create_account: "Create Account"
       Language: "Language"
+  payments:
+    form:
+      travellers: "Travellers"
+      check_in: "Check in"
+      check_out: "Check out"
+    route:
+      my_cart: "My cart"
+      travellers: "Travellers"
+      check_in: "Check in"
+      check_out: "Check out"
+      remove: "Remove"
+      pay: "Pay"
+  destinations:
+    show:
+      why_go: "Why Go"
+      to_do: "To do"
+      sights: "Sights"
+      festivals: "Festivals"
+      sleep: "Sleep"
+      eat: "Eat"
+      drink: "Drink"
+      shop: "Shop"
+      sightseeing: "Sightseeing"
+      filter: "Filter"
+      HotDeals: "HotDeals"
+      Comments: "Comments"
+    destination:
+      Know: "Get to Know"
 
 
 

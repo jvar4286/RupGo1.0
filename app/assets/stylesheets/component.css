@@ -141,6 +141,7 @@
 	-webkit-transition: -webkit-transform 0.4s;
 	-moz-transition: -moz-transform 0.4s;
 	transition: transform 0.4s;
+	max-width: 100% !important
 }
 .cs-style-3 figure span {
 	z-index: 20;

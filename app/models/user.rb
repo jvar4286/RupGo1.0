@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :deals
   has_many :payments
   has_many :transactions
-  has_many :questions
-  has_many :comments
+  has_many :questions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

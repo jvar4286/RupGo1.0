@@ -18,15 +18,9 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         
        
+       
 
-        <form class="navbar-form navbar-left">
-          <div class="form-group">
-            <i class="fa fa-search" aria-hidden="true">
-            <input type="text" class="form-control" placeholder="Search">
-
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        
         
           <!-- Search -->
             <%= link_to "Advanced search", new_search_path %></i>
@@ -40,22 +34,25 @@
         <% if user_signed_in? %>
           <li class="itnav"><%= link_to (t ".my_cart"), route_path %></li>
           <span><%= image_tag(current_user.image)%></span>
-          
-
         <% end -%>
-        <li><%= t ".Language" %>:
-        <%= link_to_unless_current "English", locale: "en" %> <span>&nbsp|&nbsp</span> 
-        <%= link_to_unless_current "Español", locale: "es" %></li>
+        
+
+        <li class="itnav"> 
+       <span> <%= link_to_unless_current image_tag("en.png"),:class => "active-en", locale: "en" %> </span> 
+        <span><%= link_to_unless_current image_tag("es.png"),:class => "active-es", locale: "es" %></span></li>
           <li class="dropdown sign itnav">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ACCOUNT<span class="caret"></span></a>
             <ul class="dropdown-menu signed">
             <% if user_signed_in? %>
+
               
+
               <li><%= link_to (t ".My_routes"), buys_path %></li>
               <li><%= link_to (t ".Close_session"), destroy_user_session_path, method: :delete %></li>
                <% else %>
               <li role="separator" class="divider"></li>
               <li><%= link_to (t ".Sign_in"), new_user_session_path %></li>
+              <!--  -->
               <li><%= link_to (t ".Sign_in_Facebook"), user_omniauth_authorize_path(:facebook) %></li>
               <li><%= link_to (t ".Create_account"), new_user_registration_path %></li>
             <% end %>
@@ -238,5 +235,23 @@ $(function () {
 });
   </script>
 
+  <script>
+    $document(ready(function () {
+      $(this).click(function () {
+        $()
+      })
+    }))
+  </script>
+  <script>
+    var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+
+   
+    
+    var random-colour =  $('body').css("background",hue);
+
+    $("")
+
+  </script>
+     
   <!-- End of Map Script -->
 </header>

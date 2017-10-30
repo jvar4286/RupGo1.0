@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :set_regions
 
   protected
-
+  	
 	def authenticate_editor!
 		redirect_to root_path unless user_signed_in? && current_user.is_editor?
 	end
