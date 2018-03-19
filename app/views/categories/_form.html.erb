@@ -1,4 +1,5 @@
 <%= form_for(category) do |f| %>
+  <div class="centerforms">
   <% if category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -15,8 +16,12 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
-
+  <div class="field">
+    Fotos: <%= f.file_field :catecover %>
+  </div>
+ 
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

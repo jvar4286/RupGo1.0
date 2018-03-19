@@ -8,6 +8,7 @@
 body{
 
 }
+
 @font-face {
   font-family: "FontAwesome";
   font-style: normal;
@@ -29,6 +30,8 @@ body{
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import url(https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple);
+@import url('https://fonts.googleapis.com/css?family=Exo');
+
 // importing modules
 
 	// @import "bootstrap";
@@ -40,6 +43,12 @@ body{
 /*#myCarousel{
 	display: none;
 }*/
+
+/*General h1*/
+h1{
+	font-family: 'Oswald', sans-serif !important;
+}
+
 
 // Styles for pops outs and forms
 .centerforms{
@@ -85,7 +94,7 @@ $links: white;
 
 
 body{
-	font-family: verdana;
+	font-family: 'Oswald', sans-serif;
 
 }
 
@@ -110,7 +119,7 @@ header nav ul li{
 .itnav a:hover, .itnav a:focus{
 	background: transparent !important;
 	text-decoration: underline !important;
-	color: black
+	color: white
 }
 
 #myCarousel{
@@ -143,14 +152,17 @@ header nav ul li{
 
 }
 .destineimg{
-	width: 600px;
-	text-align: center;
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
 	background: black;
-	padding: 10px;
-	margin-left:10px;
+	margin: 0;
+	padding: 0;
+	margin-top: 0;
 	box-sizing: content-box;
 	img{
-		width: 550px
+		width: 100%;
+		position: relative;
 	}
 }
 
@@ -159,14 +171,15 @@ header nav ul li{
 
 /*Navigation*/
 .navbar-fixed-top.scrolled {
-  background-color: rgba(41,113,229,0.8) !important;
+  background-color: rgba(0,0,0,0.8) !important;
   transition: background-color 200ms linear;
 }
 
 
 .navbar{
 	z-index: 9999;
-	background-color: rgba(41,113,229,0.2);
+	height: 72px;
+	background-color: rgba(0,0,0,0.9);
     margin-bottom: 0px;
 }
 
@@ -184,8 +197,9 @@ header nav ul li{
 	background-color: rgba(242,242,242,0.5);
 }
 
+
 #mega_menu{
-	width: 80%;
+	width: 100%;
 	position:  absolute;
 	left: 0; 
   	right: 0;
@@ -196,36 +210,54 @@ header nav ul li{
 	margin-top: 0;
 	z-index: 9998;	
 	box-shadow: 5px 5px 7px rgba(0,0,0,0.5);
-	background-color: rgba(242,242,242,0.5);
+
+	background-color: rgba(0,0,0,0.5);
+	background-image: url(pattern.png);
+	background-repeat: repeat;
 	font-family: "Oswald"
 }
 
 .navbar-brand {
-	width: 150px;
+	width: 200px;
 	
 	padding: 0 !important
 }
 .navbar-brand img{
 	width: 100%;
 	}
-#regions{
+#regions h3{
+	color: white;
 	
 	}			
 #regions li{
 	width: 100%;
     display: inline-block;
-    color: black;
+    color: white;
     // background-color: rgba();
-    padding: 15px 16px;
+    padding: 0 0 0 16px;
     text-decoration: none;
     top: 5px;
     border-bottom: 3px solid transparent;
+    transition: all 0.5s;
 	}
+
 #regions li:hover {
 	color: white;
 	background-color: #555;
 	border-bottom: 3px solid #598;
 	}
+#regions li a{
+	 text-decoration: none;
+     display: block;
+     width: 100%;
+     height:auto;
+	padding:10px 0;
+	transition: all 0.5s;
+}
+
+#regions li a:hover{
+	color: white
+}
 #colombia-map{
 	text-align: center;
 	
@@ -246,7 +278,9 @@ header nav ul li{
 	margin: 0 auto
 }
 
-
+.column{
+	border-right: 2px solid #eee
+}
 
 
 @media (max-width: 768px) {
@@ -264,7 +298,7 @@ header nav ul li{
 	}
 #categories ul h3{
 	
-	padding: 10px 15px;
+	color: white;
 	border-bottom: 1px olive solid
 }
 #categories ul {
@@ -272,10 +306,14 @@ header nav ul li{
     margin: 0;
     padding: 0;
     width: 100%;
-    background-color: #345666;
-    
+
 	}
-#categories ul a {
+#ccategories_cover a{
+	padding: 0;
+	margin: 0;
+
+}
+#categories ul .categories_button{
 	width: 100%;
     display: inline-block;
     color: #fff;
@@ -285,15 +323,32 @@ header nav ul li{
     top: 5px;
     border-bottom: 3px solid transparent
 	}
-#categories ul a:hover {
+#categories ul .categories_button:hover {
 	color: white;
     background-color: #555;
 	border-bottom: 3px solid #598
  	}
 
+ #categories ul li{
+ 	margin-top: 10px
+ }
+ #categories .categories_cover{
+ 	overflow: hidden;
+ 	height: 75px;
+ }
+#categories .categories_cover img{
+	width: 100%;
 
 
+	-webkit-transition: 1s linear;
+  	transition: 1s linear;
+}
 
+
+#categories .categories_cover img:hover{
+	-webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
 // Classes to add Map
 .filter{
 	filter: grayscale(1);
@@ -346,6 +401,10 @@ header nav ul li{
 	margin: 0 auto;
 
 }
+.destine-container{
+	margin-top: 100px;
+	width: 100% !important
+}
 
 
 .tag{
@@ -361,11 +420,15 @@ h1{
 
 
 .bx{
+	margin-top: 15px;
 	background-image: url(bx.png);
+	
 	background-repeat: no-repeat;
 	background-position: bottom left;
-	padding-bottom: 14px;
+	padding-bottom: 10px;
 	margin-left: -10px;
+	position: absolute;
+	z-index: 999
 }
 
 .bx .tx{
@@ -375,11 +438,13 @@ h1{
 	background-color: #5F8B02;
 	color: #fff;
 	line-height: 125%;
-	box-shadow: 5px 5px 5px	rgba(0,0,0,0.5)
+	box-shadow: 5px 5px 5px	rgba(0,0,0,0.5);
+	
+	z-index: 998
 }
 
 #destine{
-	padding: 10px 0;
+	padding: 0;
 	background-color: gray
 }
 
@@ -395,14 +460,16 @@ h1{
 }
 
 .coverdestine h3 {
-	color: white
+	color: white;
+
 }
 
 
 
 .main-destines-index{
 	margin-top: -120px;
-
+	font-family: "Exo 2";
+	font-weight: 900;
 	
 }
 
@@ -611,7 +678,7 @@ body{
 	padding: 0;
 	margin: 0 auto;
 	box-sizing: border-box;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	
 
 
@@ -652,7 +719,7 @@ body{
 	line-height: 69px;
 	right: -71px;
 	top: -10px;
-	font-family: arial;
+	font-family: exo2;
 	font-size: 22px;
 	font-weight: 900
 
@@ -798,3 +865,71 @@ body{
 	height: 400px;
 
 }
+
+/*cart*/
+.main_cart{
+	width: 80%;
+	margin: 0 auto;
+	
+	
+	position: relative;
+
+}
+
+.main_cart .row{
+	background: #E3F2FD;
+	height: 230px;
+	border: 2px dashed rgba(0,0,0,0.5);
+	margin-top: 4px
+}
+.payment_img{
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	height: inherit;
+	
+
+}
+
+.payment_img img{
+	width: 100%;
+	margin: 0
+}
+
+.cart_button{
+
+}
+
+/*from navidation cart counter*/
+#item-counter {
+  position: absolute;
+  display: none;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+  text-align: center;
+}
+.cart_icon{
+	position: relative;
+}
+.cart_icon:before{
+	content: "\f07a";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #fff;
+    font-size: 18px;
+    padding-right: 0.5em !important;;
+    position: absolute;
+    top: 12px;
+    left: -6px;
+
+}
+
+/*cart end*/

@@ -10,12 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170815125917) do
+ActiveRecord::Schema.define(version: 20180127132627) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "catecover_file_name"
+    t.string   "catecover_content_type"
+    t.integer  "catecover_file_size"
+    t.datetime "catecover_updated_at"
   end
 
   create_table "comments", force: :cascade do |t|

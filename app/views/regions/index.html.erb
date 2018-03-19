@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<% if signed_in? && current_user.is_admin? %>
+<div class="centerforms">
 
 <h1>Regions</h1>
 
@@ -18,6 +19,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
+<% else %>
+          <div class="nothing"></div>
+<% end %>

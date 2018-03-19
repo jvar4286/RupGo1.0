@@ -2,6 +2,7 @@
 <%= simple_form_for(@destination) do |f| %>
 
 <% if destination.errors.any? %>
+<div class="centerforms">
     <div id="error_explanation">
       <h2><%= pluralize(destination.errors.count, "error") %> prohibited this destination from being saved:</h2>
 
@@ -88,6 +89,7 @@
 
 
 <% end %>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function() {
