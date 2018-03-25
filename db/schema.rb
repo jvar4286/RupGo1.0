@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127132627) do
+ActiveRecord::Schema.define(version: 20180325195615) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -158,6 +158,7 @@ ActiveRecord::Schema.define(version: 20180127132627) do
     t.date     "check_in"
     t.date     "check_out"
     t.integer  "quantity"
+    t.integer  "total"
     t.index ["deal_id"], name: "index_payments_on_deal_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
@@ -236,6 +237,8 @@ ActiveRecord::Schema.define(version: 20180127132627) do
     t.string   "last_name"
     t.string   "nickname"
     t.text     "image"
+    t.date     "dateofbirth"
+    t.datetime "date_of_birth"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

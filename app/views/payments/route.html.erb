@@ -27,12 +27,12 @@
 					<%= payment.check_out %><br>
 				</div>
 				<div class="col-md-4 text-center cart_button">
-					<h4><%= "$#{payment.deal.price * payment.quantity}USD" unless payment.deal.price.nil? %></h4>
+					<h4><%= "$#{payment.total}USD" unless payment.deal.price.nil? %></h4>
 
 					<div class="text-center cart_button" data-no-turbolinks>
 						<%= link_to(@route, method: :delete, class: "btn btn-danger") do %>
-					<i class="fa fa-money"></i><%= t ".remove" %>
-						<% running_total = running_total + (payment.deal.price * payment.quantity) %>
+							<i class="fa fa-money"></i><%= t ".remove" %>
+							<% running_total = running_total + (payment.total) %>
 						<%end%>
 					</div>
 					

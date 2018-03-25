@@ -1,6 +1,9 @@
 <div class="centerforms">
 
-<h1><i class="fa fa-shopping-cart"></i>My Routes </h1>
+<h1>
+	<i class="fa fa-shopping-cart"></i>
+	My Routes 
+</h1>
 <div class="main_cart">
 	
 	<div class="inner_cart">
@@ -23,7 +26,7 @@
 					<%= payment.check_out %><br>
 				</div>
 				<div class="col-md-4 text-center cart_button">
-					<h4><%= "$#{payment.deal.price * payment.quantity}USD" unless payment.deal.price.nil? %></h4>
+					<h4><%= "$#{payment.total}USD" unless payment.deal.price.nil? %></h4>
 
 					<div class="text-center cart_button" data-no-turbolinks>
 						

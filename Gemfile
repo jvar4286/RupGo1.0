@@ -52,6 +52,7 @@ gem 'will_paginate'
 gem 'activemerchant'
 gem 'rails-erd'
 gem 'record_tag_helper', '~> 1.0'
+gem 'pry'
 
 
 

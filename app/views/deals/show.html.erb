@@ -70,17 +70,17 @@
           </div>
           <br> <!-- pilas con este break...es temporal -->
           <div id="reservation">
-            <% if !user_signed_in? %>
-              <%= render "payments/form", payment: Payment.new, deal: @deal %>
-              <% end %>
+            <!--< if !user_signed_in? %>
+              < render "payments/form", payment: Payment.new, deal: @deal %>
+            < end %>
 
 
-              <% if user_signed_in? %>
-               <% if @deal.user_already_paid? current_user.id %>
-              <% else %> 
+            < if user_signed_in? %>
+              < if @deal.user_already_paid? current_user.id %>
+              < else %> -->
                 <%= render "payments/form", payment: Payment.new, deal: @deal %>
-              <% end %>
-            <% end %>
+              <!--< end %>
+            < end %>-->
             <span><p>
   <strong><%= t ".category" %>:</strong>
   <%= @deal.category %>

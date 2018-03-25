@@ -26,7 +26,13 @@ end
   include PermissionsConcern
 
 	def pending_purchase_price
-		payments.where(state: 1).joins("INNER JOIN deals on deals.id == payments.deal_id").sum("price")
+    payments = self.payments.where(state: 1)
+    total = 0
+    payments.each do |payment|
+      total = total + payment.total
+    end
+    return total
+		#self.payments.where(state: 1).joins("INNER JOIN deals on deals.id == payments.deal_id").sum("price")
 	end
 
 end
