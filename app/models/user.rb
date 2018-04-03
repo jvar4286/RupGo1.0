@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :destinations
-  has_many :deals
+  has_many :deals, through: :payments
   has_many :payments
   has_many :transactions
   has_many :questions, dependent: :destroy

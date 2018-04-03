@@ -31,6 +31,8 @@
  get "/dashboard", to: "welcome#dashboard"
 
  put "/destinations/:id/publish", to: "destinations#publish"
+
+ get "/sales", to: "welcome#sales"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

@@ -1,6 +1,8 @@
 class PaymentsController < ApplicationController
 	before_action :authenticate_user!
 
+def index
+end
 	def create
 		payment = current_user.payments.new(deal_params)
 		respond_to do |format|
@@ -21,7 +23,7 @@ end
 	end
 
 	#def quantity
-		#@payments = current_user.payments.find.last.quantity
+		#@payments = current_user.payments.find.last.quantity.
 	#end
 
 	def buys
