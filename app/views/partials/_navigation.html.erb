@@ -45,7 +45,7 @@
         <span><%= link_to_unless_current image_tag("es.png"),:class => "active-es", locale: "es" %></span></li>
           <li class="dropdown sign itnav">
                             
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ACCOUNT<span class="carret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= t ".account" %><span class="carret"></span></a>
             <ul class="dropdown-menu signed">
             <% if user_signed_in? %>
 
@@ -82,10 +82,10 @@
                 <li><%= image_tag "ori.png", :alt => "", :class => "filter img-responsive ori" %></li>
               </ul>
             
-          </div> <!-- end of colombia -->
+          </div> <!-- end of colombia. -->
 
           <div id="regions" class="column col-sm-6 col-md-3" >
-            <h3>Visit Our Natural Regions</h3>
+            <h3><%= t ".Visit" %></h3>
             <ul>
             <%= content_tag_for(:li, @regions) do |region| %>
             <%= link_to region.name,region %> 
@@ -98,7 +98,7 @@
           <div id="categories" class="column col-sm-6 col-md-6">
             <ul>
               <li>
-                <h3>Ready to get to Know Colombia?</h3>
+                <h3><%= t ".Ready" %></h3>
               </li>
             </ul>
 

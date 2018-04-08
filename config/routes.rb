@@ -13,7 +13,7 @@
   resources :searches
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
-    resources :deals do
+    resources :deals, :regions, :categories, :payments, :route do
       resources :questions, only: [:create, :destroy, :update]  
     end
     match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), via: :get
@@ -27,6 +27,7 @@
   end
  get 'welcome/index'
  root 'destinations#index'
+ get 'deals/index'
 
  get "/dashboard", to: "welcome#dashboard"
 

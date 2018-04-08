@@ -24,7 +24,6 @@
     <li><a href="#tabs-7"><%= t ".drink" %></a></li>
     <li><a href="#tabs-8"><%= t ".shop" %></a></li>
     <li><a href="#tabs-9"><%= t ".sightseeing" %></a></li>
-    <li><a href="#tabs-10"><%= t ".filter" %></a></li>
   </ul>
   <div id="tabs-1">
     <%= @destination.why_go.html_safe  %>
@@ -52,9 +51,6 @@
   </div>
   <div id="tabs-9">
     <%= @destination.around.html_safe %>
-  </div>
-  <div id="tabs-10">
-    <%= @destination.filter %>
   </div>
 
 </div> <!-- end of tabs -->

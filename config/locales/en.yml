@@ -28,7 +28,10 @@ en:
       other_details: "Other details"
       policies_and_fees: "Policies and fees"
       price: "Price"
-      category: "Category"
+      outlet: "The best tourism Hot Deals!!"
+      hotdeals: "Hot Deals"
+    deal:
+      apply: "Add to cart"
     show:
       description: "Description"
       details: "Details"
@@ -36,6 +39,12 @@ en:
       policies_and_fees: "Policies and fees"
       price: "Price"
       questions: "Questions and answers about this trip"
+      HotDeals: "Hot Deals"
+      check: "Check HotDeal"
+      book: "Book Now"
+      just_for: "Just For"
+      question: "Question Made By!!..."
+      back: "Back"
   partials:
     navigation:
       colombia: "GET TO KNOW COLOMBIA"
@@ -49,11 +58,21 @@ en:
       Sign_in_Facebook: "Sign in with Facebook"
       Create_account: "Create Account"
       Language: "Language"
+      Visit: "Visit Our Natural Regions"
+      Ready: "Ready to get to Know Colombia?"
+    footer:
+      Navigate: "Navigate"
+      Company: "Company"
+      About: "About US"
+      Privacy: "Privacy Policy"
+      Terms: "Terms Of  Use"
+      Contact: "Contact Us"
   payments:
     form:
       travellers: "Travellers"
       check_in: "Check in"
       check_out: "Check out"
+      pay: "Payment"
     route:
       my_cart: "My cart"
       travellers: "Travellers"
@@ -61,6 +80,8 @@ en:
       check_out: "Check out"
       remove: "Remove"
       pay: "Pay"
+    buys:
+      my_routes: "My Routes"
   destinations:
     show:
       why_go: "Why Go"
@@ -77,6 +98,9 @@ en:
       Comments: "Comments"
     destination:
       Know: "Get to Know"
+  regions:
+    show:
+      back: "Back"
 
 
 

@@ -7,20 +7,20 @@
  
     <nav class="breadcrumb">
       <li><%= link_to "Home", destinations_path, :class => "breadcrumb-item" %> </li>
-      <li><%= link_to "Hot Deals", deals_path, :class => "breadcrumb-item" %> </li>
-      <li><span class="breadcrumb-item active">Check Hot Deal</span></li>
+      <li><%= link_to (t ".HotDeals"), deals_path, :class => "breadcrumb-item" %> </li>
+      <li><span class="breadcrumb-item active"><%= t ".check" %></span></li>
           
     </nav>
   
   <div id="place-img-reservation" class="row">
     <div id="price" class="row">
       <div class="col-md-12">
-      <h1><span class="badge badge-secondary">Just For &nbsp <%= @deal.currency %> &nbsp<%= @deal.price %></span></h1>
+      <h1><span class="badge badge-secondary"><%= t ".just_for" %> &nbsp $<%= @deal.currency %> &nbsp<%= @deal.price %></span></h1>
       </div>
     </div>
     <div id="deal-img-reservation" class="row">
 
-      <div class="col-md-8">  <!--imgs deals -->
+      <div class="col-md-8">  <!--imgs deals. -->
       <div id="inner-deal-img">
       <div id="deal-name">
         <h1><%= @deal.place %></h1>
@@ -66,7 +66,7 @@
       <div id="reservation-hotdeal" class="col-md-4">
         <div id="inner-reservation-hotdeal">
           <div id="buy-now">
-            <h3>Book Now</h3>
+            <h3><%= t ".book" %></h3>
           </div>
           <br> <!-- pilas con este break...es temporal -->
           <div id="reservation">
@@ -81,10 +81,7 @@
                 <%= render "payments/form", payment: Payment.new, deal: @deal %>
               <!--< end %>
             < end %>-->
-            <span><p>
-  <strong><%= t ".category" %>:</strong>
-  <%= @deal.category %>
-</p></span>
+          
           </div>
         </div>
       </div><!--  reservation-hotdeal -->
@@ -142,7 +139,7 @@
             
           </div>
   <div class="media-body">
-    <h4 class="media-heading">Question Made By!!...</h4>
+    <h4 class="media-heading"><%= t ".question" %></h4>
     <%= question.body %>
   </div>
 
@@ -158,7 +155,7 @@
 </div>
   </div>
 
-<%= link_to 'Back', deals_path %>
+<%= link_to (t ".back"), deals_path %>
 </div> <!-- end Container fluid -->
 
 <script>
