@@ -73,6 +73,7 @@ en:
       check_in: "Check in"
       check_out: "Check out"
       pay: "Payment"
+      add: "Add to cart"
     route:
       my_cart: "My cart"
       travellers: "Travellers"
@@ -101,6 +102,50 @@ en:
   regions:
     show:
       back: "Back"
+  devise:
+    confirmations:
+      new: 
+        Resend: "Resend confirmation instructions" 
+    sessions:
+      new:
+        log_in: "Log in"
+    shared:
+      links:
+        Log_in: "Log in" 
+        Sign_up: "Sign up"
+        Forgot: "Forgot your password?" 
+    passwords:
+      edit:
+        Change: "Change your password"
+      new:
+        forgot: "Forgot your password?"
+        send: "Send me reset password instructions"
+    registrations:
+      new:
+        Create_account: "Create Account"
+        Sign_up: "Sign up"
+      edit:
+        Edit: "Edit"
+        leave: "(leave blank if you don't want to change it)"
+        confirm: "(we need your current password to confirm your changes)"
+        Currently: "Currently waiting confirmation for:"
+        Update: "Update"
+        Cancel: "Cancel my account"
+        Unhappy: "Unhappy?"
+        sure: "Are you sure?"
+        Back: "Back"
+    unlocks:
+      new:
+        Resend: "Resend unlock instructions"
+  activerecord:
+    attributes:
+      devise::
+        registrations:
+          new:
+            first_name: "First Name"
+
+        
+
 
 
 

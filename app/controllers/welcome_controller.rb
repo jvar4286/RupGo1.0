@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-before_action :authenticate_admin!, only: [:dashboard, :sales]
+before_action :authenticate_admin!, only: [:dashboard, :sales, :followup]
   def index
   end
 
@@ -11,5 +11,11 @@ before_action :authenticate_admin!, only: [:dashboard, :sales]
   	@sales = User.all
   	@payments = Payment.all
   	#@payments_provider = User_provider.all	
+  end
+
+  def followup
+    @sales = User.all
+    @payments = Payment.all
+    #@payments_provider = User_provider.all 
   end
 end
