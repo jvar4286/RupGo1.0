@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-# Use Puma as the app server
-gem 'puma', '~> 3.0'
+# Use pg as the database for Active Record
+gem "pg", '~> 0.18'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,10 +25,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Adding bootstap
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'font-awesome-rails'  
+gem 'font-awesome-rails'
 gem 'feathericon-sass'
 gem 'simple_form'
-gem 'summernote-rails', '~> 0.8.3.0' 
+gem 'summernote-rails', '~> 0.8.3.0'
 gem 'codemirror-rails'
 gem 'bootstrap-datepicker-rails'
 # Omniauth istallation
@@ -45,7 +44,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem 'paperclip'
 gem 'aasm'
 gem 'will_paginate'
@@ -53,11 +52,18 @@ gem 'activemerchant'
 gem 'rails-erd'
 gem 'record_tag_helper', '~> 1.0'
 gem 'pry'
+gem 'omniauth-google-oauth2'
+
+
+
 
 
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use Puma as the app server
+gem 'puma', '~> 3.0'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,6 +71,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.10', '>= 3.10.2'
+  gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.3'
+  gem 'capistrano-passenger', '~> 0.2.0'
+
+
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
@@ -77,3 +89,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'globalize', git: 'https://github.com/globalize/globalize'
 gem 'activemodel-serializers-xml'
+

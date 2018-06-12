@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406023655) do
+ActiveRecord::Schema.define(version: 20180430014042) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.datetime "updated_at",  null: false
     t.string   "name"
     t.string   "catecover"
-    t.index ["category_id"], name: "index_category_translations_on_category_id"
-    t.index ["locale"], name: "index_category_translations_on_locale"
+    t.index ["category_id"], name: "index_category_translations_on_category_id", using: :btree
+    t.index ["locale"], name: "index_category_translations_on_locale", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.text     "body"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["destination_id"], name: "index_comments_on_destination_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["destination_id"], name: "index_comments_on_destination_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "deal_translations", force: :cascade do |t|
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.text     "other_details"
     t.text     "policies_and_fees"
     t.decimal  "price"
-    t.index ["deal_id"], name: "index_deal_translations_on_deal_id"
-    t.index ["locale"], name: "index_deal_translations_on_locale"
+    t.index ["deal_id"], name: "index_deal_translations_on_deal_id", using: :btree
+    t.index ["locale"], name: "index_deal_translations_on_locale", using: :btree
   end
 
   create_table "deals", force: :cascade do |t|
@@ -75,15 +78,17 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.integer  "destination_id"
     t.date     "check_in"
     t.date     "check_out"
-    t.string   "filter"
-    t.string   "category"
     t.string   "pic1_file_name"
     t.string   "pic1_content_type"
     t.integer  "pic1_file_size"
     t.datetime "pic1_updated_at"
     t.text     "currency"
-    t.index ["destination_id"], name: "index_deals_on_destination_id"
-    t.index ["user_id"], name: "index_deals_on_user_id"
+    t.string   "filter"
+    t.string   "category"
+    t.text     "video_deal"
+    t.string   "daterange"
+    t.index ["destination_id"], name: "index_deals_on_destination_id", using: :btree
+    t.index ["user_id"], name: "index_deals_on_user_id", using: :btree
   end
 
   create_table "destination_translations", force: :cascade do |t|
@@ -101,8 +106,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.text     "drink"
     t.text     "shop"
     t.text     "around"
-    t.index ["destination_id"], name: "index_destination_translations_on_destination_id"
-    t.index ["locale"], name: "index_destination_translations_on_locale"
+    t.index ["destination_id"], name: "index_destination_translations_on_destination_id", using: :btree
+    t.index ["locale"], name: "index_destination_translations_on_locale", using: :btree
   end
 
   create_table "destinations", force: :cascade do |t|
@@ -127,8 +132,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.integer  "region_id"
     t.string   "filter"
     t.string   "category"
-    t.index ["region_id"], name: "index_destinations_on_region_id"
-    t.index ["user_id"], name: "index_destinations_on_user_id"
+    t.index ["region_id"], name: "index_destinations_on_region_id", using: :btree
+    t.index ["user_id"], name: "index_destinations_on_user_id", using: :btree
   end
 
   create_table "has_categories", force: :cascade do |t|
@@ -136,8 +141,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.integer  "category_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["category_id"], name: "index_has_categories_on_category_id"
-    t.index ["destination_id"], name: "index_has_categories_on_destination_id"
+    t.index ["category_id"], name: "index_has_categories_on_category_id", using: :btree
+    t.index ["destination_id"], name: "index_has_categories_on_destination_id", using: :btree
   end
 
   create_table "has_packages", force: :cascade do |t|
@@ -145,8 +150,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.integer  "deal_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["deal_id"], name: "index_has_packages_on_deal_id"
-    t.index ["destination_id"], name: "index_has_packages_on_destination_id"
+    t.index ["deal_id"], name: "index_has_packages_on_deal_id", using: :btree
+    t.index ["destination_id"], name: "index_has_packages_on_destination_id", using: :btree
   end
 
   create_table "has_regions", force: :cascade do |t|
@@ -155,9 +160,16 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "destination_id"
-    t.index ["deal_id"], name: "index_has_regions_on_deal_id"
-    t.index ["destination_id"], name: "index_has_regions_on_destination_id"
-    t.index ["region_id"], name: "index_has_regions_on_region_id"
+    t.index ["deal_id"], name: "index_has_regions_on_deal_id", using: :btree
+    t.index ["destination_id"], name: "index_has_regions_on_destination_id", using: :btree
+    t.index ["region_id"], name: "index_has_regions_on_region_id", using: :btree
+  end
+
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id", using: :btree
   end
 
   create_table "payments", force: :cascade do |t|
@@ -169,9 +181,10 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.date     "check_in"
     t.date     "check_out"
     t.integer  "quantity"
+    t.string   "daterange"
     t.integer  "total"
-    t.index ["deal_id"], name: "index_payments_on_deal_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
+    t.index ["deal_id"], name: "index_payments_on_deal_id", using: :btree
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
@@ -180,8 +193,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deal_id"], name: "index_questions_on_deal_id"
-    t.index ["user_id"], name: "index_questions_on_user_id"
+    t.index ["deal_id"], name: "index_questions_on_deal_id", using: :btree
+    t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end
 
   create_table "region_translations", force: :cascade do |t|
@@ -191,8 +204,8 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.datetime "updated_at", null: false
     t.string   "name"
     t.string   "rcover"
-    t.index ["locale"], name: "index_region_translations_on_locale"
-    t.index ["region_id"], name: "index_region_translations_on_region_id"
+    t.index ["locale"], name: "index_region_translations_on_locale", using: :btree
+    t.index ["region_id"], name: "index_region_translations_on_region_id", using: :btree
   end
 
   create_table "regions", force: :cascade do |t|
@@ -204,7 +217,7 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.string   "rcover_content_type"
     t.integer  "rcover_file_size"
     t.datetime "rcover_updated_at"
-    t.index ["destination_id"], name: "index_regions_on_destination_id"
+    t.index ["destination_id"], name: "index_regions_on_destination_id", using: :btree
   end
 
   create_table "searches", force: :cascade do |t|
@@ -226,7 +239,7 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "ip_address"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id", using: :btree
   end
 
   create_table "uploads", force: :cascade do |t|
@@ -236,6 +249,15 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "user_providers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_providers_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -259,10 +281,30 @@ ActiveRecord::Schema.define(version: 20180406023655) do
     t.string   "last_name"
     t.string   "nickname"
     t.text     "image"
-    t.date     "dateofbirth"
     t.datetime "date_of_birth"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "destinations"
+  add_foreign_key "comments", "users"
+  add_foreign_key "deals", "destinations"
+  add_foreign_key "deals", "users"
+  add_foreign_key "destinations", "regions"
+  add_foreign_key "destinations", "users"
+  add_foreign_key "has_categories", "categories"
+  add_foreign_key "has_categories", "destinations"
+  add_foreign_key "has_packages", "deals"
+  add_foreign_key "has_packages", "destinations"
+  add_foreign_key "has_regions", "deals"
+  add_foreign_key "has_regions", "destinations"
+  add_foreign_key "has_regions", "regions"
+  add_foreign_key "identities", "users"
+  add_foreign_key "payments", "deals"
+  add_foreign_key "payments", "users"
+  add_foreign_key "questions", "deals"
+  add_foreign_key "questions", "users"
+  add_foreign_key "regions", "destinations"
+  add_foreign_key "transactions", "users"
+  add_foreign_key "user_providers", "users"
 end

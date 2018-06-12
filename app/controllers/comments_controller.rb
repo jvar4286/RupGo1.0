@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     def set_destination
       @destination = Destination.find(params[:destination_id])
     end
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup or constraints between actions
     def set_comment
       @comment = Comment.find(params[:id])
     end
