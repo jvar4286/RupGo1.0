@@ -11,6 +11,7 @@ append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :copy_exclude, [".git", "spec"]
+set :rbenv_path, '/home/deploy/.rbenv'
 
 namespace :deploy do
 
@@ -81,6 +82,4 @@ namespace :deploy do
  after :publishing, 'deploy:restart'
   after :finishing, 'deploy:cleanup'
 end
-
-set :default_env, { "SECRET_KEY_BASE" => "XXXX", "RUPGO_DATABASE_PASSWORD" => "rupgo_password" }
 
