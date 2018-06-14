@@ -75,8 +75,8 @@ group :development do
   gem 'capistrano-rails', '~> 1.3', '>= 1.3.1'
   gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.3'
   gem 'capistrano-passenger', '~> 0.2.0'
-
-
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'

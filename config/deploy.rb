@@ -3,85 +3,72 @@ lock "~> 3.10.2"
 
 
 set :application, 'rupgo2018'
-set :repo_url, 'git@github.com:buisyteacherandy/rupgo2018.git'
+set :repo_url, 'git@github.com:jvar4286/RupGo1.0.git' 
 set :branch, :master
-set :deploy_to, '/home/ubuntu/rupgo2018'
+set :deploy_to, '/home/deploy/rupgo2018'
 set :tmp_dir, "/home/ubuntu/tmp"
 append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :copy_exclude, [".git", "spec"]
 
+set :pty, true
+set :puma_rackup, -> { File.join(current_path, 'config.ru') }
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"    #accept array for multi-bind
+set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_access_log, "#{shared_path}/log/puma_error.log"
+set :puma_error_log, "#{shared_path}/log/puma_access.log"
+set :puma_role, :app
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
+set :puma_threads, [0, 8]
+set :puma_workers, 0
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true
+set :puma_preload_app, false
+
+
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+
+# Default deploy_to directory is /var/www/my_app_name
+# set :deploy_to, '/var/www/my_app_name'
+
+# Default value for :scm is :git
+# set :scm, :git
+
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
+
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+# set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
+
+# Default value for linked_dirs is []
+# set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system')
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
+
 namespace :deploy do
 
- desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
     end
   end
 
- desc 'DB Seeds'
-  task :seed do
-    on primary fetch(:migration_role) do
-      within release_path do
-        with rails_env: fetch(:rails_env)  do
-          execute :rake, 'db:seed'
-        end
-      end
-    end
-  end
-
- desc 'DB Purge'
-  task :purge do
-    on primary fetch(:migration_role) do
-      within release_path do
-        with rails_env: fetch(:rails_env)  do
-          execute :rake, 'db:purge'
-        end
-      end
-    end
-  end
-
- desc 'DB Migrate'
-  task :migrate do
-    on primary fetch(:migration_role) do
-      within release_path do
-        with rails_env: fetch(:rails_env)  do
-          execute :rake, 'db:migrate'
-        end
-      end
-    end
-  end
-
- desc 'DB Reset'
-  task :reset do
-    on primary fetch(:migration_role) do
-      within release_path do
-        with rails_env: fetch(:rails_env)  do
-          execute :rake, 'db:reset DATABASE DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
-        end
-      end
-    end
-  end
-
- task :logs, :file do |t, args|
-    if args[:file]
-      on roles(:app) do
-        execute "tail -f #{shared_path}/log/#{args[:file]}.log"
-      end
-    else
-      puts "please specify a logfile e.g: 'rake logs:tail[logfile]"
-      puts "will tail 'shared_path/log/logfile.log'"
-      puts "remember if you use zsh you'll need to format it as:"
-      puts "rake 'logs:tail[logfile]' (single quotes)"
-    end
-  end
-
- after :publishing, 'deploy:restart'
-  after :finishing, 'deploy:cleanup'
 end
-
-set :default_env, { "SECRET_KEY_BASE" => "XXXX", "RUPGO_DATABASE_PASSWORD" => "rupgo_password" }
-
-
