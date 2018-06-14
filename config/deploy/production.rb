@@ -1,6 +1,6 @@
 set :stage, :production
 
-server 'ec2-54-200-112-47.us-west-2.compute.amazonaws.com', user: 'deploy', roles: %w{app db web}, ssh_options: {user:'deploy', keys: %w(~/.ssh/rupgo_deploy.pem), forward_agent: true}
+server 'ec2-54-200-112-47.us-west-2.compute.amazonaws.com', user: 'ubuntu', roles: %w{app db web}, ssh_options: {user:'ubuntu', keys: %w(~/.ssh/rupgo_deploy.pem), forward_agent: true}
 
 # server-based syntax
 # ======================
